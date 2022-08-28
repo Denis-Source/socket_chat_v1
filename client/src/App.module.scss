@@ -1,0 +1,25 @@
+.app {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 10px;
+}
+
+.log {
+  width: 200px;
+}
+
+.button {
+  align-self: center;
+}
+
+.rooms {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

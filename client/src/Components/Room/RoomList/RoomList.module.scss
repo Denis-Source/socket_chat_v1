@@ -1,0 +1,17 @@
+@import "src/Styles/_globals.scss";
+
+.rooms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: 600px;
+}
+
+.button {
+  align-self: center;
+}
+
+.followButtonClassName {
+  display: none;
+}

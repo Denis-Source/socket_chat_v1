@@ -1,0 +1,34 @@
+.logItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 10px;
+}
+
+.source {
+  margin: 0;
+  align-items: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.received {
+  @extend .source;
+}
+
+.sent {
+  @extend .source
+}
+
+.type {
+  margin: 0;
+  font-size: 16px;
+  align-self: flex-end;
+}
+
+.message {
+  margin: 0;
+  font-size: 14px;
+  align-self: flex-end;
+}

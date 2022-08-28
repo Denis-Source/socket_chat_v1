@@ -1,0 +1,19 @@
+.wrapper {
+  height: 400px;
+}
+
+.logList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  margin-bottom: 15px;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.scrollButton {
+  display: none;
+}
