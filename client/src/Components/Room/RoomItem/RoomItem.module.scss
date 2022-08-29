@@ -3,14 +3,9 @@
 .room {
   background-color: $color-room;
   padding: 15px;
-  margin: 10px;
-
-
-
+  margin: 0 10px;
   border-radius: 5px;
-
   width: calc(100% - 50px);
-
   display: flex;
   flex-direction: column;
   gap: 20px;
