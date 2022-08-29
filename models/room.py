@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Set, List
+from random import choice
 
 from .base_model import BaseModel
 from .message import Message
@@ -25,9 +25,12 @@ class RoomColors(str, Enum):
 class Room(BaseModel):
     TYPE = ModelTypes.ROOM
 
-    def __init__(self, color: RoomColors = RoomColors.WHITE):
+    def __init__(self, color: RoomColors = None):
         super().__init__()
-        self.color = color
+        if not color:
+            self.xcolor = choice([e.value for e in RoomColors])
+        else:
+            self.color = color
         self.name = f"{self.TYPE}-{self.uuid}"
         self.users = []
         self.messages = []
@@ -52,4 +55,5 @@ class Room(BaseModel):
             "type": self.TYPE,
             "uuid": str(self.uuid),
             "name": self.name,
+            "color": self.color
         }
