@@ -28,7 +28,7 @@ class Room(BaseModel):
     def __init__(self, color: RoomColors = None):
         super().__init__()
         if not color:
-            self.xcolor = choice([e.value for e in RoomColors])
+            self.color = choice([e.value for e in RoomColors])
         else:
             self.color = color
         self.name = f"{self.TYPE}-{self.uuid}"
