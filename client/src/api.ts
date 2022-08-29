@@ -1,1 +1,2 @@
-export const WSS_FEED_URL = "ws://127.0.0.1:9000";
+export const WSS_FEED_URL = "ws://localhost:9000";
+// export const WSS_FEED_URL = "wss://test.zoloto.cx.ua/api";

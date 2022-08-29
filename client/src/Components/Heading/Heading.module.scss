@@ -1,3 +1,5 @@
+@import "src/Styles/_globals.scss";
+
 .heading {
   display: flex;
   flex-direction: column;
@@ -13,11 +15,18 @@
 }
 
 .text {
-  width: 400px;
+  width: 480px;
   align-self: flex-end;
   margin: 0;
   display: flex;
   justify-content: space-between;
+  font-family: $font-family-mono;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .subHeading {

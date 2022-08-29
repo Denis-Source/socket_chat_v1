@@ -1,18 +1,46 @@
-$color-white: #ffffff;
-$color-room: #dedede;
-$color-accent: #1c3879;
+$color-background-start: #e3a979;
+$color-background-finish: #d98483;
 
-$color-my-message: #4e62c9;
-$color-other-message: #dedede;
+$color-room: #ffffff40;
+$color-accent: #ffffff77;
 
-$font-family: 'Roboto Slab', serif;
+$color-text: #000000cc;
+
+$color-my-message: #ffffff88;
+$color-other-message: #ffffff44;
+
+@font-face {
+  font-family: Raleway-Regular;
+  font-display: swap;
+  src: url("fonts/Raleway-Regular.ttf");
+}
+
+@font-face {
+  font-family: RobotoMono-Regular;
+  font-display: swap;
+  src: url("fonts/RobotoMono-Regular.ttf");
+}
+
+$font-family-text: "Raleway-Regular", serif;
+$font-family-mono: "RobotoMono-Regular", serif;
+
+body {
+  font-family: $font-family-mono;
+  margin: 0;
+
+  color: $color-text;
+
+  background: linear-gradient(-45deg, $color-background-start, $color-background-finish);
+  min-height: 100vh;
+}
+
 
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: $color-white;
+  background: transparent;
 
 }
 

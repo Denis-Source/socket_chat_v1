@@ -63,20 +63,10 @@ function App() {
         setLogItems([...logItems, {
             type: Messages.SelectRoom,
             received: false,
-            message: room.name.slice(0, 12) + "..."
+            message: room.name.slice(0, 17) + "..."
         }].slice(-100))
     }
 
-    const listRoom = async () => {
-        sendJsonMessage({
-            "type": Messages.ListRoom,
-            "payload": {}
-        });
-        setLogItems([...logItems, {
-            type: Messages.ListRoom,
-            received: false
-        }].slice(-100))
-    }
 
     const sendMessage = async (event: SyntheticEvent, messageBody: string) => {
         event.preventDefault();
@@ -90,22 +80,21 @@ function App() {
         setLogItems([...logItems, {
             type: Messages.SendMessage,
             received: false,
-            message: messageBody.slice(0, 12) + "..."
+            message: messageBody.slice(0, 17) + "..."
         }].slice(-100))
 
     }
     const createRoom = async () => {
-        setLogItems([...logItems, {
-            type: Messages.CreateRoom,
-            received: false
-        }].slice(-100))
-
         await sendJsonMessage({
                 "type": Messages.CreateRoom,
                 "payload": {}
             }
         );
-        await listRoom();
+
+        setLogItems([...logItems, {
+            type: Messages.CreateRoom,
+            received: false
+        }].slice(-100))
 
     }
 
@@ -113,7 +102,7 @@ function App() {
         setLogItems([...logItems, {
             type: Messages.LeaveRoom,
             received: false,
-            message: currentRoom?.name.slice(0, 12) + "..."
+            message: currentRoom?.name.slice(0, 17) + "..."
         }].slice(-100))
 
         await sendJsonMessage({
@@ -135,7 +124,7 @@ function App() {
         setLogItems([...logItems, {
             type: Messages.DeleteRoom,
             received: false,
-            message: room.name.slice(0, 12) + "..."
+            message: room.name.slice(0, 17) + "..."
         }].slice(-100))
 
     }

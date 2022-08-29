@@ -1,7 +1,6 @@
 @import "src/Styles/_globals.scss";
 
 .message {
-  border-radius: 10px;
   padding: 10px;
   width: 400px;
 
@@ -16,13 +15,14 @@
   @extend .message;
   align-self: flex-end;
   background-color: $color-my-message;
-  color: $color-white;
+  border-radius: 10px 0 10px 10px;
 }
 
 .otherMessage {
   @extend .message;
   align-self: flex-start;
   background-color: $color-other-message;
+  border-radius: 0 10px 10px 10px;
 }
 
 .body {

@@ -6,9 +6,9 @@ const LogItem = ({logItem}: { logItem: LogModel }) => {
     return (
         <div className={styles.logItem}>
             {logItem.received ?
-                <p className={styles.received}>received:</p>
+                <p className={styles.source}>received:</p>
                 :
-                <p className={styles.sent}>sent:</p>
+                <p className={styles.source}>sent:</p>
             }
             <p className={styles.type}>{logItem.type}</p>
             <p className={styles.message}>{logItem?.message}</p>

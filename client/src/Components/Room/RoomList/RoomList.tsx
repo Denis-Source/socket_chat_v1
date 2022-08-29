@@ -16,7 +16,7 @@ const RoomList = ({
     return (
         <>
             {rooms &&
-                <ScrollToBottom className={styles.wrapper} followButtonClassName={styles.scrollButton}>
+                <ScrollToBottom className={styles.wrapper} followButtonClassName={styles.followButtonClassName}>
                     <div className={styles.rooms}>
                         {rooms.map(room =>
                             <RoomItem callback={setSelectRoom} callbackDelete={callbackDelete} room={room}
