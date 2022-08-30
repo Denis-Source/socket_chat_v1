@@ -17,6 +17,8 @@ class MessageBodies(str, Enum):
     MESSAGE = "message"
     DELETE_ROOM = "delete_room"
     ROOM_NOT_EMPTY = "room_not_empty"
+    CHANGE_ROOM_COLOR = "change_room_color"
+    CHANGE_ROOM_NAME = "change_room_name"
 
     BAD_DATA = "bad_data"
 

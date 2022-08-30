@@ -16,11 +16,6 @@
   justify-content: space-between;
 }
 
-.name {
-  font-size: 24px;
-  margin: 0;
-  align-self: flex-start;
-}
 
 .select {
   align-self: flex-end;
@@ -43,4 +38,43 @@
   height: 20px;
   border-radius: 5px;
   outline: 2px solid $color-accent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.popOver {
+  position: absolute;
+  z-index: 2;
+  height: 0;
+
+  left: -11.5px;
+  top: 16px;
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.innerWrapper {
+  position: relative;
+  height: auto;
+}
+
+.name {
+  font-family: $font-family-text;
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  font-size: 24px;
+}
+
+.fullHeight {
+  height: 100%;
 }

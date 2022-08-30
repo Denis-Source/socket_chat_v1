@@ -29,7 +29,6 @@ function App() {
     const [logItems, setLogItems] = useState<LogModel[]>([])
 
     const processMessages = (data: any) => {
-        console.log(data);
         setLogItems([...logItems, {
             type: data.type,
             message: data?.payload.message,
@@ -67,6 +66,37 @@ function App() {
         }].slice(-100))
     }
 
+    const changeRoomName = async (name: string, room: RoomModel) => {
+        sendJsonMessage({
+                "type": Messages.SelectRoomName,
+                "payload": {
+                    "uuid": room.uuid,
+                    "name": name,
+                }
+            }
+        );
+        setLogItems([...logItems, {
+            type: Messages.SelectRoomName,
+            received: false,
+            message: name
+        }].slice(-100))
+    }
+
+    const changeRoomColor = async (color: string, room: RoomModel) => {
+        sendJsonMessage({
+                "type": Messages.SelectRoomColor,
+                "payload": {
+                    "uuid": room.uuid,
+                    "color": color,
+                }
+            }
+        );
+        setLogItems([...logItems, {
+            type: Messages.SendMessage,
+            received: false,
+            message: color
+        }].slice(-100))
+    }
 
     const sendMessage = async (event: SyntheticEvent, messageBody: string) => {
         event.preventDefault();
@@ -142,7 +172,8 @@ function App() {
                         :
                         <div className={styles.rooms}>
                             <RoomList callbackDelete={deleteRoom} callback={createRoom} setSelectRoom={selectRoom}
-                                      rooms={rooms}/>
+                                      rooms={rooms} callbackChangeColor={changeRoomColor}
+                                      callbackChangeName={changeRoomName}/>
                         </div>
                     }
                 </div>

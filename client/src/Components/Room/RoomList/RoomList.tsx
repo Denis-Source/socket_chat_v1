@@ -12,8 +12,10 @@ const RoomList = ({
                       rooms,
                       setSelectRoom,
                       callback,
-                      callbackDelete
-                  }: { rooms: RoomModel[], setSelectRoom: any, callback: any, callbackDelete: any }) => {
+                      callbackDelete,
+                      callbackChangeColor,
+                      callbackChangeName,
+                  }: { rooms: RoomModel[], setSelectRoom: any, callback: any, callbackDelete: any, callbackChangeColor: any, callbackChangeName: any }) => {
 
     const [filteredString, setFilteredString] = useState<string>("");
 
@@ -21,13 +23,15 @@ const RoomList = ({
         <>
             <div className={styles.searchWrapper}>
                 <label className={styles.searchLabel}>Search:</label>
-                <input className={styles.search} type="text" onChange={(event) => setFilteredString(event.target.value)}/>
+                <input className={styles.search} type="text"
+                       onChange={(event) => setFilteredString(event.target.value)}/>
             </div>
             {rooms &&
                 <ScrollToBottom className={styles.wrapper} followButtonClassName={styles.followButtonClassName}>
                     <div className={styles.rooms}>
                         {rooms.filter(room => room.name.includes(filteredString)).map(room =>
-                            <RoomItem callback={setSelectRoom} callbackDelete={callbackDelete} room={room}
+                            <RoomItem callbackChangeName={callbackChangeName} callbackChangeColor={callbackChangeColor}
+                                      callback={setSelectRoom} callbackDelete={callbackDelete} room={room}
                                       key={room.uuid}/>
                         )}
                     </div>

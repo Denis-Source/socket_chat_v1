@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from enum import Enum
 from random import choice
 
@@ -24,6 +25,7 @@ class RoomColors(str, Enum):
 
 class Room(BaseModel):
     TYPE = ModelTypes.ROOM
+    COLOR_RE = r"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
 
     def __init__(self, color: RoomColors = None):
         super().__init__()
@@ -50,6 +52,12 @@ class Room(BaseModel):
             return True
         return False
 
+    def set_color(self, color: str):
+        self.color = color
+
+    def set_name(self, name: str):
+        self.name = name
+
     def get_dict(self) -> dict:
         return {
             "type": self.TYPE,
@@ -57,3 +65,10 @@ class Room(BaseModel):
             "name": self.name,
             "color": self.color
         }
+
+    @staticmethod
+    def check_color(color: str) -> bool:
+        color_re = re.compile(Room.COLOR_RE)
+        if color_re.match(color):
+            return True
+        return False

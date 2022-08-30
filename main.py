@@ -32,7 +32,60 @@ class Chat:
             MessageBodies.SEND_MESSAGE: self.send_message,
             MessageBodies.LEAVE_ROOM: self.leave_room,
             MessageBodies.DELETE_ROOM: self.delete_room,
+            MessageBodies.CHANGE_ROOM_COLOR: self.change_room_color,
+            MessageBodies.CHANGE_ROOM_NAME: self.change_room_name
         }
+
+    async def change_room_name(self, payload: dict, user: User) -> bool:
+        # try:
+            room_uuid = payload["uuid"]
+            room: Room = self.rooms.get(room_uuid)
+            room_name = payload["name"]
+            if room:
+                self.logger.info(f"Changing name for {room} to {room_name}")
+                room.set_name(room_name)
+                await user.websocket.send(json.dumps(Messages.OK))
+                await self.broadcast_rooms()
+                return True
+            else:
+                self.logger.info(f"No room found for {user}")
+                await user.websocket.send(json.dumps(Messages.NO_SPECIFIED_ROOM))
+                return False
+        # except KeyError:
+        #     await user.websocket.send(json.dumps(
+        #         Messages.BAD_DATA_SENT
+        #     ))
+        #     return False
+
+    async def change_room_color(self, payload: dict, user: User) -> bool:
+        try:
+            color: str = payload["color"]
+            room: Room = self.rooms.get(payload["uuid"])
+            if not room:
+                await user.websocket.send(json.dumps(
+                    Messages.NO_SPECIFIED_ROOM
+                ))
+                return False
+
+            if Room.check_color(color):
+                self.logger.info(f"Changing color of {room.name}")
+                room.set_color(color)
+                await user.websocket.send(json.dumps(
+                    Messages.OK
+                ))
+                await self.broadcast_rooms()
+                return True
+            else:
+                await user.websocket.send(json.dumps(
+                    Messages.BAD_DATA_SENT
+                ))
+                return False
+
+        except KeyError:
+            await user.websocket.send(json.dumps(
+                Messages.BAD_DATA_SENT
+            ))
+            return False
 
     async def create_room(self, payload: dict, user: User) -> bool:
         room = Room()

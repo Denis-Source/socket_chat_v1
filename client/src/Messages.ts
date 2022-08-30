@@ -7,5 +7,7 @@ export enum Messages {
     SendMessage = "send_message",
     CreateRoom = "create_room",
     LeaveRoom = "leave_room",
-    DeleteRoom = "delete_room"
+    DeleteRoom = "delete_room",
+    SelectRoomColor = "change_room_color",
+    SelectRoomName = "change_room_name"
 }
